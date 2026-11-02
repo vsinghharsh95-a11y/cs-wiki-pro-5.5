@@ -99,6 +99,7 @@
   document.getElementById('article-category').textContent=current.category;
   document.getElementById('article-crumb-category').textContent=current.category.toUpperCase();
   document.getElementById('article-reading-time').textContent=minutes+' MIN READ';
+  document.getElementById('article-difficulty').textContent=String(current.difficulty||'Beginner').toUpperCase();
   document.getElementById('article-explanation').innerHTML=paragraphs.map(text=>'<p>'+esc(text)+'</p>').join('');
   document.getElementById('diagram-title').textContent=extra.visualTitle||'A visual model';
   document.getElementById('diagram-caption').textContent=extra.visualCaption||'';
@@ -110,6 +111,16 @@
   const glossary=extra.glossary||[];
   document.getElementById('article-glossary').innerHTML=glossary.length?glossary.map(([term,definition])=>'<div class="glossary-term"><dt>'+esc(term)+'</dt><dd>'+esc(definition)+'</dd></div>').join(''):'<div class="glossary-term"><dt>Key idea</dt><dd>'+esc(current.summary)+'</dd></div>';
   const related=(extra.related||[]).map(id=>all.find(item=>slugify(item.title)===id)).filter(Boolean).slice(0,4);
+  const articleSlugFor=item=>item.custom?slugify(item.title)+'-custom-'+item.id:slugify(item.title);
+  const readSlugs=new Set(readingHistory.map(item=>item.slug).filter(Boolean));
+  const suggested=related.find(item=>!readSlugs.has(articleSlugFor(item)))||related[0];
+  const nextLesson=document.getElementById('article-next-lesson');
+  if(suggested){
+    const nextSlug=articleSlugFor(suggested);
+    nextLesson.innerHTML='<a class="next-lesson-card" href="article.html?slug='+encodeURIComponent(nextSlug)+'"><span class="next-lesson-kicker">A GOOD NEXT STEP</span><span class="next-lesson-meta">'+esc(suggested.category)+' · '+esc(suggested.difficulty||'Beginner')+'</span><b>'+esc(suggested.title)+'</b><small>'+esc(suggested.summary)+'</small><span class="next-lesson-link">Open this guide ↗</span></a>';
+  }else{
+    nextLesson.innerHTML='<p class="next-lesson-empty">Explore the library for another connected idea.</p>';
+  }
   document.getElementById('article-related').innerHTML=related.map(item=>{
     const relatedSlug=item.custom?slugify(item.title)+'-custom-'+item.id:slugify(item.title);
     return '<a class="related-article-card" href="article.html?slug='+encodeURIComponent(relatedSlug)+'"><span>'+esc(item.category)+'</span><b>'+esc(item.title)+'</b><small>'+esc(item.summary)+'</small><i>↗</i></a>';
@@ -121,7 +132,7 @@
   heroArt.querySelector('b').textContent=glyphs[slug]||'✳';
   const references=extra.sources||[];
   const schema=document.createElement('script');schema.type='application/ld+json';
-  schema.textContent=JSON.stringify({'@context':'https://schema.org','@type':'LearningResource','name':current.title,'description':current.summary,'learningResourceType':'Article','educationalLevel':'Beginner','url':location.href,'citation':references.map(source=>source[1])});
+  schema.textContent=JSON.stringify({'@context':'https://schema.org','@type':'LearningResource','name':current.title,'description':current.summary,'learningResourceType':'Article','educationalLevel':current.difficulty||'Beginner','url':location.href,'citation':references.map(source=>source[1])});
   document.head.appendChild(schema);
 
   const bookmarkButton=document.getElementById('article-save');

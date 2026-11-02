@@ -1,6 +1,7 @@
 // ===== 1. ELEMENTS =====
 const grid = document.getElementById("grid");
 const searchBox = document.getElementById("search");
+const difficultyFilter = document.getElementById("difficulty-filter");
 const filtersDiv = document.getElementById("filters");
 const countEl = document.getElementById("count");
 const modal = document.getElementById("modal");
@@ -37,6 +38,7 @@ const dataProblem = builtInArticles.length === 0;
 let userArticles = load("csw-articles", []);   // articles you add
 let bookmarks = load("csw-bookmarks", []);     // ids of saved articles
 let activeCategory = "All";
+let activeDifficulty = "All";
 
 // built-in articles + your own
 function allArticles() {
@@ -151,6 +153,7 @@ function renderFilters() {
     const btn = document.createElement("button");
     btn.className = "chip" + (cat === activeCategory ? " active" : "");
     btn.textContent = cat === "Saved" ? "★ Saved (" + bookmarks.length + ")" : cat;
+    btn.setAttribute("aria-pressed", String(cat === activeCategory));
     btn.onclick = function () {
       activeCategory = cat;
       renderFilters();
@@ -170,11 +173,10 @@ function renderCards(animate) {
     const matchesCategory =
       activeCategory === "All" ||
       (activeCategory === "Saved" ? bookmarks.includes(a.id) : a.category === activeCategory);
-    const matchesSearch =
-      a.title.toLowerCase().includes(lower) ||
-      a.summary.toLowerCase().includes(lower) ||
-      a.category.toLowerCase().includes(lower);
-    return matchesCategory && matchesSearch;
+    const searchableContent = [a.title, a.summary, a.category, ...(Array.isArray(a.content) ? a.content : [])].join(" ").toLowerCase();
+    const matchesSearch = searchableContent.includes(lower);
+    const matchesDifficulty = activeDifficulty === "All" || (a.difficulty || "Beginner") === activeDifficulty;
+    return matchesCategory && matchesSearch && matchesDifficulty;
   });
 
   countEl.textContent = filtered.length + " of " + allArticles().length + " articles";
@@ -202,6 +204,8 @@ function renderCards(animate) {
     card.className = "card";
     const coverGlyph = ({ Basics: "⌘", Networks: "⌁", Data: "▦", Programming: "</>", Security: "◈", Systems: "◒" })[a.category] || "✳";
     card.dataset.category = String(a.category).toLowerCase().replace(/\s+/g, "-");
+    const difficulty = a.difficulty || "Beginner";
+    card.dataset.difficulty = difficulty.toLowerCase();
 
     if (animate) {
       card.style.animationDelay = index * 0.07 + "s";
@@ -214,6 +218,7 @@ function renderCards(animate) {
       '<button class="bookmark' + (saved ? " saved" : "") + '" title="Save article" aria-label="' + (saved ? "Remove saved article" : "Save article") + '">' + (saved ? "★" : "☆") + "</button>" +
       '<a class="card-open" href="article.html?slug=' + encodeURIComponent(articleSlug(a)) + '">' +
       '<span class="tag">' + escapeHtml(a.category) + "</span>" +
+      '<span class="level-tag">' + escapeHtml(difficulty) + "</span>" +
       "<h3>" + highlight(a.title, word) + "</h3>" +
       "<p>" + highlight(a.summary, word) + "</p>" +
       '<span class="time">' + readingTime(a) + " min read</span></a>";
@@ -363,6 +368,7 @@ window.addEventListener("scroll", function () {
 
 // ===== 13. CONNECT EVERYTHING =====
 searchBox.addEventListener("input", function () { renderCards(false); });
+if (difficultyFilter) difficultyFilter.addEventListener("change", function () { activeDifficulty = difficultyFilter.value; renderCards(true); });
 closeBtn.addEventListener("click", closeModal);
 addBtn.addEventListener("click", openForm);
 

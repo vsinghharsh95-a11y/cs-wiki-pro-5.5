@@ -47,3 +47,8 @@ The site is static and can be hosted on GitHub Pages. Bookmarks, reading history
 ## Global access
 
 Point 7 adds a mobile navigation menu, keyboard skip links, visible focus styling, and a site-wide reduced-motion fallback. A navigation-language selector offers English and Hindi labels for the shared navigation and accessibility controls; article and lesson text remains in English. Visual article diagrams with accessible descriptions also show those descriptions as captions.
+
+
+## Better discovery
+
+Point 8 adds a keyboard-first site search (press `/` or `Ctrl+K` / `⌘K`), topic and difficulty filters in the article library, difficulty labels, and a suggested next lesson based on each visitor's reading history. Search and recommendations run in the browser using the site articles and locally saved custom articles.

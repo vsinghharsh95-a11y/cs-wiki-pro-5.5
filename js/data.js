@@ -5,6 +5,7 @@ const articles = [
     id: 1,
     title: "Algorithm",
     category: "Basics",
+    difficulty: "Beginner",
     summary: "A step-by-step set of instructions for solving a problem.",
     content: [
       "An algorithm is a finite list of clear steps that solves a problem or completes a task. A recipe is a good everyday example: follow the steps in order and you get the result.",
@@ -16,6 +17,7 @@ const articles = [
     id: 2,
     title: "Binary",
     category: "Basics",
+    difficulty: "Beginner",
     summary: "The number system of 0s and 1s that computers use.",
     content: [
       "Binary is a base-2 number system that uses only two digits: 0 and 1. Each digit is called a bit.",
@@ -27,6 +29,7 @@ const articles = [
     id: 3,
     title: "Internet",
     category: "Networks",
+    difficulty: "Beginner",
     summary: "A global network of connected computers.",
     content: [
       "The internet is a worldwide network that connects billions of devices. Data travels between them in small pieces called packets.",
@@ -38,6 +41,7 @@ const articles = [
     id: 4,
     title: "Database",
     category: "Data",
+    difficulty: "Intermediate",
     summary: "An organized collection of information that can be searched quickly.",
     content: [
       "A database is a structured collection of data stored so it can be easily added to, searched and updated.",
@@ -49,6 +53,7 @@ const articles = [
     id: 5,
     title: "Variable",
     category: "Programming",
+    difficulty: "Beginner",
     summary: "A named box that stores a value in a program.",
     content: [
       "A variable is a name given to a place in memory where a program keeps a value. The value can change while the program runs.",
@@ -60,6 +65,7 @@ const articles = [
     id: 6,
     title: "Loop",
     category: "Programming",
+    difficulty: "Beginner",
     summary: "A way to repeat instructions without writing them again and again.",
     content: [
       "A loop repeats a block of code until a condition is met. It saves time and keeps programs short.",
@@ -71,6 +77,7 @@ const articles = [
     id: 7,
     title: "Encryption",
     category: "Security",
+    difficulty: "Intermediate",
     summary: "Scrambling data so only the right people can read it.",
     content: [
       "Encryption turns readable data into scrambled data using a key. Only someone with the correct key can turn it back.",
@@ -82,6 +89,7 @@ const articles = [
     id: 8,
     title: "Operating System",
     category: "Systems",
+    difficulty: "Intermediate",
     summary: "The software that manages a computer's hardware and programs.",
     content: [
       "An operating system, or OS, is the main software that runs a computer. It manages memory, storage, the processor and connected devices.",
