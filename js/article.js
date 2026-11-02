@@ -124,18 +124,19 @@
   document.getElementById('article-glossary').innerHTML=glossary.length?glossary.map(([term,definition])=>'<div class="glossary-term"><dt>'+esc(term)+'</dt><dd>'+esc(definition)+'</dd></div>').join(''):'<div class="glossary-term"><dt>Key idea</dt><dd>'+esc(current.summary)+'</dd></div>';
   const related=(extra.related||[]).map(id=>all.find(item=>slugify(item.title)===id)).filter(Boolean).slice(0,4);
   const articleSlugFor=item=>item.custom?slugify(item.title)+'-custom-'+item.id:slugify(item.title);
+  const articleHrefFor=item=>{const target=articleSlugFor(item);return ['algorithm','binary','internet','database','variable','loop','encryption','operating-system'].includes(target)?target+'.html':'article.html?slug='+encodeURIComponent(target);};
   const readSlugs=new Set(readingHistory.map(item=>item.slug).filter(Boolean));
   const suggested=related.find(item=>!readSlugs.has(articleSlugFor(item)))||related[0];
   const nextLesson=document.getElementById('article-next-lesson');
   if(suggested){
     const nextSlug=articleSlugFor(suggested);
-    nextLesson.innerHTML='<a class="next-lesson-card" href="article.html?slug='+encodeURIComponent(nextSlug)+'"><span class="next-lesson-kicker">A GOOD NEXT STEP</span><span class="next-lesson-meta">'+esc(suggested.category)+' · '+esc(suggested.difficulty||'Beginner')+'</span><b>'+esc(suggested.title)+'</b><small>'+esc(suggested.summary)+'</small><span class="next-lesson-link">Open this guide ↗</span></a>';
+    nextLesson.innerHTML='<a class="next-lesson-card" href="'+articleHrefFor(suggested)+'"><span class="next-lesson-kicker">A GOOD NEXT STEP</span><span class="next-lesson-meta">'+esc(suggested.category)+' · '+esc(suggested.difficulty||'Beginner')+'</span><b>'+esc(suggested.title)+'</b><small>'+esc(suggested.summary)+'</small><span class="next-lesson-link">Open this guide ↗</span></a>';
   }else{
     nextLesson.innerHTML='<p class="next-lesson-empty">Explore the library for another connected idea.</p>';
   }
   document.getElementById('article-related').innerHTML=related.map(item=>{
     const relatedSlug=item.custom?slugify(item.title)+'-custom-'+item.id:slugify(item.title);
-    return '<a class="related-article-card" href="article.html?slug='+encodeURIComponent(relatedSlug)+'"><span>'+esc(item.category)+'</span><b>'+esc(item.title)+'</b><small>'+esc(item.summary)+'</small><i>↗</i></a>';
+    return '<a class="related-article-card" href="'+articleHrefFor(item)+'"><span>'+esc(item.category)+'</span><b>'+esc(item.title)+'</b><small>'+esc(item.summary)+'</small><i>↗</i></a>';
   }).join('')||'<p class="no-related">More related guides are on the way.</p>';
   const sources=extra.sources||[];
   document.getElementById('article-sources').innerHTML=sources.length?sources.map(([title,url,note])=>'<li><div><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+esc(title)+' ↗</a><p>'+esc(note)+'</p></div></li>').join(''):'<li><div><span>More sources will be added as this guide grows.</span></div></li>';
