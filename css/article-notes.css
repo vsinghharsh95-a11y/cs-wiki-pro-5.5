@@ -1,0 +1,71 @@
+/* Private article notes: browser-local, styled to match the CS Wiki field guides. */
+.page-article .personal-notes-section {
+  display: grid;
+  gap: 16px;
+  margin: 34px 0;
+  padding: clamp(22px, 4vw, 36px);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at 100% 0, rgba(157, 76, 255, .12), transparent 45%),
+    var(--card);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .16);
+}
+.personal-notes-copy .eyebrow {
+  color: var(--accent-2);
+  letter-spacing: .15em;
+}
+.personal-notes-copy h2 {
+  margin: 10px 0;
+  color: var(--text);
+  font-size: clamp(1.5rem, 3vw, 2.15rem);
+}
+.personal-notes-copy p {
+  max-width: 620px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.personal-note-label {
+  color: var(--text);
+  font-size: .92rem;
+  font-weight: 600;
+}
+#article-note {
+  width: 100%;
+  min-height: 140px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  line-height: 1.65;
+  resize: vertical;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+#article-note::placeholder { color: var(--muted); opacity: .78; }
+#article-note:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(157, 76, 255, .16);
+}
+.personal-note-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.personal-note-actions [hidden] { display: none; }
+#article-note-status {
+  min-height: 1.4em;
+  color: var(--muted);
+  font-size: .88rem;
+}
+@media (max-width: 600px) {
+  .page-article .personal-notes-section { border-radius: 18px; }
+  .personal-note-actions .btn { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #article-note { transition: none; }
+}
