@@ -68,7 +68,8 @@
 
   const esc=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const slugify=value=>String(value).toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-  const slug=new URLSearchParams(location.search).get('slug')||'';
+  const pathSlug=location.pathname.split("/").pop().replace(/\\.html$/i,"");
+  const slug=new URLSearchParams(location.search).get("slug")||pathSlug;
   let userArticles=[];try{userArticles=JSON.parse(localStorage.getItem('csw-articles')||'[]');}catch{}
   const all=[...(Array.isArray(articles)?articles:[]),...userArticles];
   const current=all.find(item=>{
@@ -93,6 +94,17 @@
   const wordCount=paragraphs.join(' ').trim().split(/\s+/).filter(Boolean).length;
   const minutes=Math.max(1,Math.round(wordCount/200));
   document.title=current.title+' — CS Wiki';
+  const canonicalUrl='https://cswiki.online/'+slug+'.html';
+  let canonical=document.querySelector('link[rel="canonical"]');
+  if(!canonical){canonical=document.createElement('link');canonical.rel='canonical';document.head.appendChild(canonical);}
+  canonical.href=canonicalUrl;
+  const setMeta=(selector,attribute,value)=>{let node=document.querySelector(selector);if(!node){node=document.createElement('meta');const parts=selector.match(/\[(name|property)="([^"]+)"\]/);if(parts)node.setAttribute(parts[1],parts[2]);document.head.appendChild(node);}node.setAttribute('content',value);};
+  setMeta('meta[name="description"]','name',current.summary);
+  setMeta('meta[property="og:title"]','property',current.title+' — CS Wiki');
+  setMeta('meta[property="og:description"]','property',current.summary);
+  setMeta('meta[property="og:url"]','property',canonicalUrl);
+  setMeta('meta[name="twitter:title"]','name',current.title+' — CS Wiki');
+  setMeta('meta[name="twitter:description"]','name',current.summary);
   document.getElementById('article-title').textContent=current.title;
   document.getElementById('article-lead').textContent=current.summary;
   document.getElementById('article-summary').textContent=extra.inOneSentence||current.summary;
