@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09070d">
+  <meta name="description" content="Follow curated learning paths through computer science, from your first bits to the technology behind the web.">
+  <title>Learning Paths — CS Wiki</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-paths">
+  <div class="progress" id="progress"></div>
+  <nav class="navbar">
+    <a class="logo" href="index.html">CS<span>Wiki</span><i>✳</i></a>
+    <div class="nav-links">
+      <a href="index.html" data-page="home">Home</a><a href="map.html" data-page="map">Map</a><a href="paths.html" data-page="paths">Paths</a><a href="articles.html" data-page="articles">Articles</a><a href="labs.html" data-page="labs">Labs</a><a href="challenges.html" data-page="challenges">Challenges</a><a href="about.html" data-page="about">About</a>
+      <button class="icon-btn" id="theme-btn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+    </div>
+  </nav>
+  <main class="paths-page">
+    <header class="page-intro paths-intro">
+      <span class="eyebrow">CURATED ROUTES / LEARN WITH DIRECTION</span>
+      <h1>Follow the<br><span class="gradient-text">thread.</span></h1>
+      <p>Big ideas make more sense in the right order. Choose a trail, move one step at a time, and watch the connections form.</p>
+      <div class="intro-index">02 <span>—</span> YOUR NEXT IDEA</div>
+    </header>
+    <section class="learning-overview" aria-label="Your learning progress">
+      <div class="overview-copy"><span class="eyebrow">YOUR LEARNING, YOUR PACE</span><h2 id="resume-title">A good place to begin.</h2><p id="resume-copy">Choose a path and we’ll keep your progress on this device.</p></div>
+      <div class="overview-progress"><div class="overview-numbers"><strong id="completed-count">0</strong><span>lessons completed</span><small id="path-count-label">across 2 paths</small></div><div class="overview-ring" id="overview-ring"><span>✳</span></div></div>
+      <a class="btn btn-primary resume-button" id="resume-button" href="#paths">Explore paths <span>↘</span></a>
+    </section>
+    <section class="paths-catalog" id="paths">
+      <div class="section-head"><div><span class="eyebrow">CHOOSE YOUR FIRST TRAIL</span><h2>Learn in chapters.</h2></div><span class="count">01 / 02</span></div>
+      <div class="path-grid" id="path-grid"></div>
+    </section>
+    <p class="local-progress-note"><span>◉</span> Your progress is saved in this browser. No account needed.</p>
+  </main>
+  <footer class="footer"><a class="logo footer-logo" href="index.html">CS<span>Wiki</span></a><br>Built for the beautifully curious. <span>© 2026 CS Wiki</span></footer>
+  <script src="js/paths.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>

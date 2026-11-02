@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08080d">
+  <meta name="description" content="Nine interactive computer science labs: binary, sorting, encryption, logic gates, data structures, network routing, SQL, regex, and CPU scheduling.">
+  <title>The Experiment Room — CS Wiki</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-labs">
+
+  <div class="progress" id="progress"></div>
+  <nav class="navbar">
+    <a class="logo" href="index.html">CS<span>Wiki</span><i>✳</i></a>
+    <div class="nav-links">
+      <a href="index.html" data-page="home">Home</a><a href="map.html" data-page="map">Map</a><a href="paths.html" data-page="paths">Paths</a><a href="articles.html" data-page="articles">Articles</a><a href="labs.html" data-page="labs">Labs</a><a href="challenges.html" data-page="challenges">Challenges</a><a href="about.html" data-page="about">About</a>
+      <button class="icon-btn" id="theme-btn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+    </div>
+  </nav>
+
+  <header class="page-intro reveal"><span class="eyebrow">INTERACTIVE PLAYGROUND</span><h1>The experiment room</h1><p>Pull apart the logic behind the screen. Try it, change it, see what happens.</p><div class="intro-index">03 <span>—</span> 04</div></header>
+
+  <header class="hero">
+    <span class="badge"><span class="badge-dot"></span> An independent field guide to computer science</span>
+    <h1>Make sense of<br><span class="gradient-text">the invisible.</span></h1>
+    <p>A visual field guide to the ideas shaping our digital world. Start with a question; leave with a little more wonder.</p>
+    <div class="hero-buttons">
+      <a href="articles.html" class="btn btn-primary">Explore the library <span>↗</span></a>
+      <a href="#" class="btn btn-ghost" id="random-btn"><span class="sparkle">✳</span> Surprise me</a>
+    </div>
+  </header>
+
+  <div class="ticker" aria-hidden="true"><div>ALGORITHMS <b>✳</b> NETWORKS <b>✳</b> SYSTEMS <b>✳</b> DATA <b>✳</b> HUMAN IDEAS <b>✳</b> ALGORITHMS <b>✳</b> NETWORKS <b>✳</b></div></div>
+
+  <section class="stats reveal">
+    <div class="stat"><span class="num" id="stat-articles">0</span><span class="label">Articles</span></div>
+    <div class="stat"><span class="num" id="stat-categories">0</span><span class="label">Categories</span></div>
+    <div class="stat"><span class="num" id="stat-saved">0</span><span class="label">Saved by you</span></div>
+  </section>
+
+  <main class="container" id="articles">
+    <div class="section-head reveal">
+      <div><span class="eyebrow">A GOOD PLACE TO BEGIN</span><h2>Ideas, made clear.</h2></div>
+      <div class="head-right">
+        <a class="text-link" href="articles.html">Browse all articles <span>↗</span></a>
+        <span class="count" id="count"></span>
+        <button class="add-btn" id="add-btn">+ New Article</button>
+      </div>
+    </div>
+
+    <input type="text" id="search" class="search" placeholder="Search articles...  (press / to focus)" autocomplete="off">
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <section class="container labs" id="labs">
+    <div class="section-head reveal">
+      <div><span class="eyebrow">PLAY WITH THE BUILDING BLOCKS</span><h2>Learn by doing.</h2></div>
+      <span class="count">learn by doing</span>
+    </div>
+
+    <div class="filters lab-tabs" id="lab-tabs" role="tablist" aria-label="Choose an interactive lab">
+      <button class="chip tab active" data-lab="binary">Binary</button>
+      <button class="chip tab" data-lab="sorting">Sorting</button>
+      <button class="chip tab" data-lab="cipher">Cipher</button>
+      <button class="chip tab" data-lab="gates">Logic Gates</button>
+      <button class="chip tab" data-lab="structures">Data Structures</button>
+      <button class="chip tab" data-lab="routing">Network Routing</button>
+      <button class="chip tab" data-lab="sql">SQL</button>
+      <button class="chip tab" data-lab="regex">Regex</button>
+      <button class="chip tab" data-lab="cpu">CPU Scheduling</button>
+    </div>
+
+    <!-- LAB 1: BINARY -->
+    <div class="lab active" id="lab-binary">
+      <p class="lab-intro">Computers only understand 0s and 1s. Click the bits to flip them. Each bit is worth double the one on its right, and the ones that are ON add up to the number.</p>
+      <div class="bits" id="bits"></div>
+      <label class="lab-field">Or type a number (0 to 255)
+        <input type="number" id="dec-input" min="0" max="255" value="5">
+      </label>
+      <div class="readouts">
+        <div class="readout"><span>Binary</span><strong id="out-bin"></strong></div>
+        <div class="readout"><span>Hex</span><strong id="out-hex"></strong></div>
+        <div class="readout"><span>Octal</span><strong id="out-oct"></strong></div>
+        <div class="readout"><span>ASCII letter</span><strong id="out-ascii"></strong></div>
+      </div>
+      <p class="explain" id="bin-explain"></p>
+    </div>
+
+    <!-- LAB 2: SORTING -->
+    <div class="lab" id="lab-sorting">
+      <p class="lab-intro">Sorting is one of the most studied problems in computer science. Pick an algorithm and watch how it puts the bars in order.</p>
+      <div class="controls">
+        <select id="sort-algo">
+          <option value="bubble">Bubble sort</option>
+          <option value="selection">Selection sort</option>
+          <option value="insertion">Insertion sort</option>
+        </select>
+        <label>Size <input type="range" id="sort-size" min="8" max="60" value="30"></label>
+        <label>Speed <input type="range" id="sort-speed" min="1" max="100" value="60"></label>
+        <button class="btn-small" id="sort-shuffle">Shuffle</button>
+        <button class="add-btn" id="sort-start">Start</button>
+      </div>
+      <div class="bars" id="bars"></div>
+      <div class="stats-line">
+        <span>Comparisons: <b id="sort-comp">0</b></span>
+        <span>Swaps: <b id="sort-swaps">0</b></span>
+      </div>
+      <p class="explain" id="sort-explain"></p>
+    </div>
+
+    <!-- LAB 3: CIPHER -->
+    <div class="lab" id="lab-cipher">
+      <p class="lab-intro">The Caesar cipher hides a message by shifting every letter along the alphabet. It is one of the oldest encryption methods and is said to have been used by Julius Caesar.</p>
+      <div class="mode-switch">
+        <button class="chip active" id="mode-enc">Encrypt</button>
+        <button class="chip" id="mode-dec">Decrypt</button>
+      </div>
+      <label class="lab-field">Your message
+        <textarea id="cipher-in" rows="3">Hello, World!</textarea>
+      </label>
+      <label class="lab-field">Shift: <b id="shift-val">3</b>
+        <input type="range" id="shift" min="1" max="25" value="3">
+      </label>
+      <div class="wheel" id="wheel"></div>
+      <p class="explain">Top row: the letter you type. Bottom row: what it turns into.</p>
+      <div class="readout wide">
+        <span id="cipher-label">Encrypted message</span>
+        <strong id="cipher-out"></strong>
+      </div>
+      <button class="btn-small" id="cipher-copy">Copy result</button>
+      <p class="explain" style="margin-top:20px">Challenge: switch to Decrypt, use a shift of 3, and decode <b>Khoor Zruog</b>.</p>
+    </div>
+
+    <!-- LAB 4: LOGIC GATES -->
+    <div class="lab" id="lab-gates">
+      <p class="lab-intro">Logic gates are tiny decision makers inside a processor. Change the inputs and gate to see how a Boolean rule becomes an output bit.</p>
+      <div class="lab-toolbar">
+        <label class="lab-field compact-field">Choose a gate
+          <select id="gate-type"><option value="AND">AND</option><option value="OR">OR</option><option value="XOR">XOR</option><option value="NAND">NAND</option><option value="NOR">NOR</option><option value="NOT">NOT A</option></select>
+        </label>
+        <div class="gate-inputs" aria-label="Gate inputs"><button class="gate-input" id="gate-a" type="button" aria-label="Toggle input A">A <b>0</b></button><button class="gate-input" id="gate-b" type="button" aria-label="Toggle input B">B <b>1</b></button></div>
+      </div>
+      <div class="gate-circuit" aria-live="polite"><div class="gate-input-lines"><div class="circuit-input"><span>INPUT A</span><b id="gate-a-line">0</b></div><div class="circuit-input" id="gate-b-input"><span>INPUT B</span><b id="gate-b-line">1</b></div></div><div class="circuit-wire"></div><div class="gate-symbol" id="gate-symbol">&amp;</div><div class="circuit-wire"></div><div class="circuit-output"><span>OUTPUT</span><b id="gate-output">0</b></div></div>
+      <div class="readouts gate-readouts"><div class="readout"><span>Rule</span><strong id="gate-rule">A AND B</strong></div><div class="readout"><span>Current result</span><strong id="gate-result">0</strong></div></div>
+      <div class="truth-table-wrap"><h3>Truth table</h3><table class="data-table"><thead><tr><th>A</th><th>B</th><th id="truth-heading">A AND B</th></tr></thead><tbody id="truth-table"></tbody></table></div>
+      <p class="explain" id="gate-explain"></p>
+    </div>
+
+    <!-- LAB 5: DATA STRUCTURES -->
+    <div class="lab" id="lab-structures">
+      <p class="lab-intro">A data structure is a way to arrange information so a program can use it. Compare a stack, which serves the newest item first, with a queue, which serves the oldest first.</p>
+      <div class="lab-toolbar"><div class="mode-switch" role="group" aria-label="Choose a data structure"><button class="chip structure-mode active" data-structure="stack">Stack · LIFO</button><button class="chip structure-mode" data-structure="queue">Queue · FIFO</button></div></div>
+      <div class="controls structure-controls"><label>Add an item <input id="structure-value" maxlength="10" value="A" aria-label="Item value"></label><button class="btn-small" id="structure-add">Add item</button><button class="btn-small" id="structure-remove">Remove next</button><button class="btn-small" id="structure-random">Add sample</button><button class="btn-small" id="structure-reset">Reset</button></div>
+      <div class="structure-stage"><div class="structure-caption" id="structure-caption">TOP · next out</div><div class="structure-view stack-view" id="structure-view" aria-live="polite"></div><div class="structure-caption structure-tail" id="structure-tail">BOTTOM · first in</div></div>
+      <p class="explain" id="structure-explain"></p>
+    </div>
+
+    <!-- LAB 6: NETWORK ROUTING -->
+    <div class="lab" id="lab-routing">
+      <p class="lab-intro">Routers pass packets along links to reach a destination. Pick two points, then find the route with the lowest total delay.</p>
+      <div class="controls route-controls"><label>From <select id="route-source"><option value="Device">Your device</option><option value="Gateway">Home router</option><option value="Campus">Campus</option><option value="Exchange">Internet exchange</option><option value="Service">Web server</option><option value="Cloud">Cloud region</option></select></label><label>To <select id="route-target"><option value="Cloud">Cloud region</option><option value="Service">Web server</option><option value="Exchange">Internet exchange</option><option value="Campus">Campus</option><option value="Gateway">Home router</option><option value="Device">Your device</option></select></label><button class="btn-small" id="route-run">Find the fastest route</button></div>
+      <div class="network-scroll"><div class="network-stage" id="network-stage" aria-label="Network topology">
+        <svg class="network-links" viewBox="0 0 800 330" preserveAspectRatio="none" aria-hidden="true">
+          <line data-edge="Device|Gateway" x1="90" y1="165" x2="245" y2="80"/><line data-edge="Gateway|Campus" x1="245" y1="80" x2="400" y2="165"/><line data-edge="Gateway|Exchange" x1="245" y1="80" x2="555" y2="75"/><line data-edge="Campus|Exchange" x1="400" y1="165" x2="555" y2="75"/><line data-edge="Campus|Service" x1="400" y1="165" x2="555" y2="255"/><line data-edge="Exchange|Service" x1="555" y1="75" x2="555" y2="255"/><line data-edge="Exchange|Cloud" x1="555" y1="75" x2="710" y2="165"/><line data-edge="Service|Cloud" x1="555" y1="255" x2="710" y2="165"/>
+        </svg>
+        <div class="router-node" data-router="Device" style="--rx:11.25%;--ry:50%"><span>YOU</span><b>Your device</b></div><div class="router-node" data-router="Gateway" style="--rx:30.6%;--ry:24%"><span>GW</span><b>Home router</b></div><div class="router-node" data-router="Campus" style="--rx:50%;--ry:50%"><span>ISP</span><b>Campus</b></div><div class="router-node" data-router="Exchange" style="--rx:69.4%;--ry:22.7%"><span>IX</span><b>Exchange</b></div><div class="router-node" data-router="Service" style="--rx:69.4%;--ry:77.3%"><span>WEB</span><b>Web server</b></div><div class="router-node" data-router="Cloud" style="--rx:88.75%;--ry:50%"><span>☁</span><b>Cloud region</b></div>
+      </div></div>
+      <div class="route-result" id="route-result" aria-live="polite"><strong>Choose a route to begin.</strong><span>Each link shows its delay in milliseconds.</span></div>
+    </div>
+
+    <!-- LAB 7: SQL PLAYGROUND -->
+    <div class="lab" id="lab-sql">
+      <p class="lab-intro">Ask the sample <code>books</code> table a question. Try SELECT, WHERE, ORDER BY, or LIMIT; the small dataset runs right here in your browser.</p>
+      <div class="sql-editor"><div class="sql-editor-head"><span><i></i><i></i><i></i> QUERY EDITOR</span><select id="sql-example" aria-label="Load a sample query"><option value="">Choose a sample query</option><option value="SELECT title, category FROM books ORDER BY title ASC">List book titles A–Z</option><option value="SELECT * FROM books WHERE category = 'Networks'">Find network books</option><option value="SELECT title, minutes FROM books WHERE minutes &gt; 5 ORDER BY minutes DESC">Find longer reads</option></select></div><textarea id="sql-query" spellcheck="false" aria-label="SQL query">SELECT title, category FROM books ORDER BY title ASC</textarea><button class="btn-small" id="sql-run">Run query <span>↗</span></button></div>
+      <div class="sql-message" id="sql-message" role="status">Ready to query 8 sample rows.</div><div class="sql-result-wrap"><table class="data-table sql-result-table"><thead id="sql-head"></thead><tbody id="sql-body"></tbody></table></div>
+      <p class="explain">This learning sandbox supports SELECT, a single basic WHERE condition, ORDER BY, and LIMIT. It uses a small built-in example table.</p>
+    </div>
+
+    <!-- LAB 8: REGULAR EXPRESSIONS -->
+    <div class="lab" id="lab-regex">
+      <p class="lab-intro">A regular expression is a pattern for finding text. Edit the pattern or sample, then see each match highlighted as you type.</p>
+      <div class="regex-controls"><label>Pattern <div class="regex-input-wrap"><span>/</span><input id="regex-pattern" value="[A-Z][a-z]+" spellcheck="false"><span>/</span><input id="regex-flags" value="g" maxlength="4" aria-label="Regular expression flags"></div></label><label>Try a pattern<select id="regex-example"><option value="">Choose an example</option><option value="\b\w+@\w+\.\w+\b|g">Find simple email addresses</option><option value="\b\d{4}\b|g">Find four-digit years</option><option value="#[0-9a-fA-F]{6}|gi">Find hex colors</option><option value="\b(cat|dog)s?\b|gi">Find cats or dogs</option></select></label></div>
+      <label class="lab-field">Sample text<textarea id="regex-text" rows="5" spellcheck="false">Ada Lovelace wrote notes in 1843. Grace Hopper popularized the term debugging in 1947. Today, computers help people explore new ideas.</textarea></label>
+      <div class="regex-preview"><div class="regex-preview-head"><span>LIVE MATCH PREVIEW</span><b id="regex-count">0 matches</b></div><pre id="regex-highlight" aria-label="Text with matches highlighted"></pre></div><div class="regex-match-list" id="regex-match-list" aria-live="polite"></div>
+    </div>
+
+    <!-- LAB 9: CPU SCHEDULING -->
+    <div class="lab" id="lab-cpu">
+      <p class="lab-intro">The operating system scheduler decides which ready process gets CPU time. Compare first-come-first-served, shortest-job-first, and round-robin scheduling.</p>
+      <div class="controls cpu-controls"><label>Algorithm <select id="cpu-algo"><option value="fcfs">First come, first served</option><option value="sjf">Shortest job first</option><option value="rr">Round robin</option></select></label><label id="quantum-wrap">Time quantum <input type="number" id="cpu-quantum" min="1" max="6" value="2"></label><button class="btn-small" id="cpu-run">Simulate schedule</button></div>
+      <div class="cpu-processes"><h3>Ready processes</h3><div class="cpu-process-grid" id="cpu-processes"></div></div><div class="cpu-gantt-wrap"><div class="cpu-gantt-label">CPU TIMELINE</div><div class="cpu-gantt" id="cpu-gantt" aria-label="CPU scheduling timeline"></div><div class="cpu-time-scale" id="cpu-time-scale"></div></div>
+      <div class="readouts cpu-readouts"><div class="readout"><span>Average wait</span><strong id="cpu-wait">—</strong></div><div class="readout"><span>Average turnaround</span><strong id="cpu-turnaround">—</strong></div><div class="readout"><span>CPU finish time</span><strong id="cpu-finish">—</strong></div></div><p class="explain" id="cpu-explain"></p>
+    </div>
+  </section>
+
+  <footer class="footer reveal" id="about">
+    <p><a class="logo footer-logo" href="index.html">CS<span>Wiki</span></a><br>Built for the beautifully curious. <span>© 2026 CS Wiki</span></p>
+  </footer>
+
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <button class="close" id="close">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/demos.js"></script>
+  <script src="js/advanced-labs.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>

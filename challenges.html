@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08080d">
+  <meta name="description" content="Take a short daily computer science challenge. Get hints, learn from the explanation, and optionally build a streak.">
+  <title>Daily Challenges — CS Wiki</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-challenges">
+  <div class="progress" id="progress"></div>
+  <nav class="navbar">
+    <a class="logo" href="index.html">CS<span>Wiki</span><i>✳</i></a>
+    <div class="nav-links">
+      <a href="index.html" data-page="home">Home</a><a href="map.html" data-page="map">Map</a><a href="paths.html" data-page="paths">Paths</a><a href="articles.html" data-page="articles">Articles</a><a href="labs.html" data-page="labs">Labs</a><a href="challenges.html" data-page="challenges">Challenges</a><a href="about.html" data-page="about">About</a>
+      <button class="icon-btn" id="theme-btn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+    </div>
+  </nav>
+
+  <header class="page-intro challenge-intro">
+    <span class="eyebrow">ONE QUESTION / A LITTLE CURIOSITY</span>
+    <h1>Think it<br><span class="gradient-text">through.</span></h1>
+    <p>A fresh computer science question each day. Take a guess, ask for a hint, and leave with one idea clearer.</p>
+    <div class="intro-index">DAILY <span>—</span> FIELD NOTES</div>
+  </header>
+
+  <main class="challenge-page">
+    <div class="challenge-layout">
+      <section class="daily-challenge" aria-labelledby="challenge-title">
+        <div class="daily-topline"><span class="daily-stamp"><i></i> TODAY’S CHALLENGE</span><span id="challenge-date" class="daily-date"></span></div>
+        <div class="challenge-topic-row"><span id="challenge-topic" class="challenge-topic">FOUNDATIONS</span><span id="challenge-number" class="challenge-number">01 / 09</span></div>
+        <h2 id="challenge-title">Loading today’s question…</h2>
+        <p id="challenge-prompt" class="challenge-prompt"></p>
+        <div id="challenge-options" class="challenge-options" role="group" aria-label="Answer choices"></div>
+        <div class="hint-box">
+          <div class="hint-heading"><span>NEED A NUDGE?</span><span id="hint-count">0 / 2 hints</span></div>
+          <div id="hint-text" class="hint-text">Hints are there when you want them. Try a guess first if you like.</div>
+          <button class="btn-small hint-button" id="hint-button" type="button">Reveal a hint <span>↘</span></button>
+        </div>
+        <div id="challenge-feedback" class="challenge-feedback" role="status" aria-live="polite" hidden></div>
+        <div class="challenge-footer"><span>ABOUT 2 MINUTES</span><button id="reveal-answer" class="quiet-button" type="button">Show solution</button></div>
+      </section>
+
+      <aside class="challenge-sidebar" aria-label="Your challenge progress">
+        <section class="streak-card">
+          <div class="streak-orbit" aria-hidden="true"><span>✳</span></div>
+          <span class="eyebrow">YOUR FIELD NOTES</span>
+          <div class="streak-metrics"><div><strong id="current-streak">0</strong><span>day streak</span></div><div><strong id="solved-total">0</strong><span>solved</span></div></div>
+          <div class="week-track" id="week-track" aria-label="Last seven days"></div>
+          <label class="reward-toggle"><input type="checkbox" id="reward-toggle" checked><span class="toggle-track"></span><span>Show optional streaks &amp; badges</span></label>
+          <p class="local-rewards-note">Progress stays in this browser. No account, leaderboard, or pressure to keep a streak.</p>
+        </section>
+        <section class="badge-card" id="badge-card">
+          <div class="badge-head"><div><span class="eyebrow">MILESTONES</span><h3>Small wins.</h3></div><strong id="badge-count">0 / 5</strong></div>
+          <div class="badge-list" id="badge-list"></div>
+        </section>
+      </aside>
+    </div>
+    <section class="challenge-note"><span>✳</span><p>Missed a day? You can start again any time. The point is the idea you take away, not the number beside it.</p></section>
+  </main>
+
+  <footer class="footer"><a class="logo footer-logo" href="index.html">CS<span>Wiki</span></a><br>Built for the beautifully curious. <span>© 2026 CS Wiki</span></footer>
+  <script src="js/challenges.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>

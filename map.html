@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09070d">
+  <meta name="description" content="Explore how the ideas of computer science connect in an interactive concept map.">
+  <title>The Concept Map — CS Wiki</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-map">
+  <div class="progress" id="progress"></div>
+  <nav class="navbar">
+    <a class="logo" href="index.html">CS<span>Wiki</span><i>✳</i></a>
+    <div class="nav-links">
+      <a href="index.html" data-page="home">Home</a><a href="map.html" data-page="map">Map</a><a href="paths.html" data-page="paths">Paths</a><a href="articles.html" data-page="articles">Articles</a><a href="labs.html" data-page="labs">Labs</a><a href="challenges.html" data-page="challenges">Challenges</a><a href="about.html" data-page="about">About</a>
+      <button class="icon-btn" id="theme-btn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+    </div>
+  </nav>
+  <main class="map-page">
+    <header class="page-intro map-intro">
+      <span class="eyebrow">THE BIG PICTURE / INTERACTIVE MAP</span>
+      <h1>Everything<br><span class="gradient-text">connects.</span></h1>
+      <p>Computer science is a web of ideas. Pick a point, follow a connection, and see how the pieces fit together.</p>
+      <div class="intro-index">EXPLORE <span>—</span> 08 CONCEPTS</div>
+    </header>
+    <section class="map-explorer" aria-label="Interactive computer science concept map">
+      <div class="map-tools">
+        <label class="map-search-wrap"><span aria-hidden="true">⌕</span><input type="search" id="map-search" placeholder="Find a concept..." autocomplete="off"><kbd>/</kbd></label>
+        <div class="map-filters" role="group" aria-label="Filter map concepts">
+          <button class="map-filter is-active" data-filter="all">All ideas</button>
+          <button class="map-filter" data-filter="Foundations">Foundations</button>
+          <button class="map-filter" data-filter="Programming">Programming</button>
+          <button class="map-filter" data-filter="Systems">Systems</button>
+          <button class="map-filter" data-filter="Networks">Networks</button>
+          <button class="map-filter" data-filter="Data">Data</button>
+          <button class="map-filter" data-filter="Security">Security</button>
+        </div>
+      </div>
+      <div class="map-stage-viewport" aria-label="Scrollable concept map"><div class="map-stage" id="map-stage" aria-label="Concept connections diagram">
+        <svg class="map-lines" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="lineGradient" x1="0" x2="1"><stop offset="0" stop-color="#a554ff"/><stop offset="1" stop-color="#62e8d9"/></linearGradient></defs>
+          <path class="map-edge" data-from="binary" data-to="algorithm" d="M 145 315 C 195 285, 230 254, 285 245"/>
+          <path class="map-edge" data-from="algorithm" data-to="variable" d="M 350 226 C 405 188, 441 155, 481 143"/>
+          <path class="map-edge" data-from="variable" data-to="loop" d="M 540 148 C 595 158, 626 190, 665 210"/>
+          <path class="map-edge" data-from="algorithm" data-to="operating-system" d="M 316 285 C 322 340, 346 376, 366 408"/>
+          <path class="map-edge" data-from="operating-system" data-to="internet" d="M 427 438 C 558 465, 682 375, 793 315"/>
+          <path class="map-edge" data-from="internet" data-to="database" d="M 838 354 C 833 378, 816 405, 797 425"/>
+          <path class="map-edge" data-from="internet" data-to="encryption" d="M 787 340 C 735 414, 676 461, 623 480"/>
+          <path class="map-edge" data-from="database" data-to="encryption" d="M 754 466 C 708 485, 666 492, 633 492"/>
+        </svg>
+        <div class="map-core"><span>CS</span><small>the ideas<br>underneath</small></div>
+        <button class="map-node" data-id="binary" data-category="Foundations" style="--x:11%;--y:51%"><span class="node-icon">01</span><span class="node-copy"><small>FOUNDATIONS</small><b>Binary</b></span><span class="node-no">01</span></button>
+        <button class="map-node" data-id="algorithm" data-category="Foundations" style="--x:31%;--y:39%"><span class="node-icon">⌘</span><span class="node-copy"><small>FOUNDATIONS</small><b>Algorithm</b></span><span class="node-no">02</span></button>
+        <button class="map-node" data-id="variable" data-category="Programming" style="--x:51%;--y:23%"><span class="node-icon">x</span><span class="node-copy"><small>PROGRAMMING</small><b>Variable</b></span><span class="node-no">03</span></button>
+        <button class="map-node" data-id="loop" data-category="Programming" style="--x:70%;--y:35%"><span class="node-icon">↻</span><span class="node-copy"><small>PROGRAMMING</small><b>Loop</b></span><span class="node-no">04</span></button>
+        <button class="map-node" data-id="operating-system" data-category="Systems" style="--x:38%;--y:72%"><span class="node-icon">▧</span><span class="node-copy"><small>SYSTEMS</small><b>Operating system</b></span><span class="node-no">05</span></button>
+        <button class="map-node" data-id="internet" data-category="Networks" style="--x:84%;--y:50%"><span class="node-icon">⌁</span><span class="node-copy"><small>NETWORKS</small><b>Internet</b></span><span class="node-no">06</span></button>
+        <button class="map-node" data-id="database" data-category="Data" style="--x:78%;--y:75%"><span class="node-icon">▤</span><span class="node-copy"><small>DATA</small><b>Database</b></span><span class="node-no">07</span></button>
+        <button class="map-node" data-id="encryption" data-category="Security" style="--x:57%;--y:83%"><span class="node-icon">◈</span><span class="node-copy"><small>SECURITY</small><b>Encryption</b></span><span class="node-no">08</span></button>
+      </div></div>
+      <div class="map-legend"><span><i></i> A connection between ideas</span><span>SELECT A CONCEPT TO EXPLORE IT <b>↗</b></span></div>
+    </section>
+    <section class="concept-detail" aria-live="polite" aria-labelledby="concept-title">
+      <div class="detail-number" id="concept-number">02</div>
+      <div class="detail-main"><span class="eyebrow" id="concept-category">FOUNDATIONS / CONCEPT</span><h2 id="concept-title">Algorithm</h2><p id="concept-summary">Select a concept to see how it connects to the rest of computer science.</p><div class="related-list" id="concept-related"></div></div>
+      <div class="detail-actions"><a class="btn btn-primary" id="concept-read" href="articles.html">Read the guide <span>↗</span></a><button class="btn btn-ghost copy-map-link" id="copy-map-link">Copy concept link</button><span class="map-status" id="map-status" role="status"></span></div>
+    </section>
+  </main>
+  <footer class="footer"><a class="logo footer-logo" href="index.html">CS<span>Wiki</span></a><br>Built for the beautifully curious. <span>© 2026 CS Wiki</span></footer>
+  <script src="js/data.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>
