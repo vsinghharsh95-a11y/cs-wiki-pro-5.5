@@ -68,7 +68,7 @@
 
   const esc=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const slugify=value=>String(value).toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-  const pathSlug=location.pathname.split("/").pop().replace(/\\.html$/i,"");
+  const pathSlug=location.pathname.split("/").pop().replace(/\.html$/i,"");
   const slug=new URLSearchParams(location.search).get("slug")||pathSlug;
   let userArticles=[];try{userArticles=JSON.parse(localStorage.getItem('csw-articles')||'[]');}catch{}
   const all=[...(Array.isArray(articles)?articles:[]),...userArticles];
