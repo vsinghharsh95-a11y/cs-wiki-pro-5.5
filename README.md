@@ -1,6 +1,6 @@
 # CS Wiki — guided learning edition
 
-A multi-page computer science learning site with a cinematic visual direction, an interactive concept map, guided learning paths, article guides, nine hands-on labs, and daily challenges.
+A multi-page computer science learning site with a cinematic visual direction, an interactive concept map, guided learning paths, article guides, nine hands-on labs, daily challenges, and a personal learning space.
 
 ## Keep this folder structure when uploading
 
@@ -11,14 +11,17 @@ paths.html
 articles.html
 labs.html
 challenges.html
+space.html
 about.html
 article.html
 css/style.css
+css/space.css
 js/app.js
 js/data.js
 js/demos.js
 js/advanced-labs.js
 js/challenges.js
+js/space.js
 js/map.js
 js/paths.js
 js/article.js
@@ -35,6 +38,7 @@ Keep the `css` and `js` folders beside the HTML files. Do not flatten their cont
 - Articles: searchable library plus shareable concept guides with diagrams, examples, a quick check, key terms, and further reading
 - Labs: binary, sorting, Caesar cipher, logic gates, stacks and queues, network routing, SQL, regex, and CPU scheduling
 - Challenges: one rotating daily question with hints, explanations, optional streaks, and badges
+- My Space: reading history, saved guides, private notes, path progress, challenge activity, and data backup
 - About: project information
 
-The site is static and can be hosted on GitHub Pages. Article bookmarks, theme preference, custom articles, and learning-path progress are saved in each visitor's browser.
+The site is static and can be hosted on GitHub Pages. Bookmarks, reading history, private notes, custom articles, learning-path progress, and challenge activity stay in each visitor's browser. My Space can export and import a personal backup; it does not sync between devices automatically.

@@ -1,14 +1,17 @@
 (() => {
   const page = document.body.dataset.page || document.body.className.replace('page-', '');
-  if (page === 'map' || page === 'paths' || page === 'challenges' || document.body.classList.contains('page-article')) {
+  if (page === 'map' || page === 'paths' || page === 'challenges' || page === 'space' || document.body.classList.contains('page-article')) {
     const themeButton = document.getElementById('theme-btn');
-    const storedTheme = localStorage.getItem('csw-theme') || 'dark';
+    const rawTheme = localStorage.getItem('csw-theme') || 'dark';
+    let storedTheme = rawTheme;
+    try { storedTheme = JSON.parse(rawTheme); } catch {}
+    if (storedTheme !== 'light' && storedTheme !== 'dark') storedTheme = 'dark';
     document.documentElement.setAttribute('data-theme', storedTheme);
     themeButton.textContent = storedTheme === 'light' ? '☀️' : '🌙';
     themeButton.addEventListener('click', () => {
       const nextTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
       document.documentElement.setAttribute('data-theme', nextTheme);
-      localStorage.setItem('csw-theme', nextTheme);
+      localStorage.setItem('csw-theme', JSON.stringify(nextTheme));
       themeButton.textContent = nextTheme === 'light' ? '☀️' : '🌙';
     });
     const bar = document.getElementById('progress');

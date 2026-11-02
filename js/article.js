@@ -82,6 +82,12 @@
     document.title='Article not found — CS Wiki';
     return;
   }
+  const historyKey='csw-reading-history';
+  let readingHistory=[];
+  try{readingHistory=JSON.parse(localStorage.getItem(historyKey)||'[]');}catch{}
+  if(!Array.isArray(readingHistory))readingHistory=[];
+  readingHistory=[{id:current.id,slug:slug,title:current.title,category:current.category,summary:current.summary,visitedAt:new Date().toISOString()},...readingHistory.filter(item=>String(item.id)!==String(current.id))].slice(0,12);
+  try{localStorage.setItem(historyKey,JSON.stringify(readingHistory));}catch{}
   const extra=rich[slug]||{};
   const paragraphs=Array.isArray(current.content)?current.content:[];
   const wordCount=paragraphs.join(' ').trim().split(/\s+/).filter(Boolean).length;
@@ -126,7 +132,29 @@
     try{localStorage.setItem('csw-bookmarks',JSON.stringify(bookmarks));}catch{}
     updateBookmark();
   });
-  updateBookmark();
+  updateBookmark();
+  const noteKey=String(current.id);
+  const noteField=document.getElementById('article-note');
+  const noteSave=document.getElementById('article-note-save');
+  const noteDelete=document.getElementById('article-note-delete');
+  const noteStatus=document.getElementById('article-note-status');
+  let personalNotes={};try{personalNotes=JSON.parse(localStorage.getItem('csw-notes')||'{}');}catch{}
+  if(!personalNotes||typeof personalNotes!=='object'||Array.isArray(personalNotes))personalNotes={};
+  if(personalNotes[noteKey]&&typeof personalNotes[noteKey].content==='string')noteField.value=personalNotes[noteKey].content;
+  noteDelete.hidden=!personalNotes[noteKey];
+  noteSave.addEventListener('click',()=>{
+    const content=noteField.value.trim();
+    if(!content){delete personalNotes[noteKey];noteStatus.textContent='Empty note removed.';noteDelete.hidden=true;}
+    else{personalNotes[noteKey]={id:current.id,title:current.title,slug:slug,content:content,updatedAt:new Date().toISOString()};noteStatus.textContent='Private note saved in this browser.';noteDelete.hidden=false;}
+    try{localStorage.setItem('csw-notes',JSON.stringify(personalNotes));}
+    catch{noteStatus.textContent='This browser could not save the note.';}
+  });
+  noteDelete.addEventListener('click',()=>{
+    delete personalNotes[noteKey];noteField.value='';noteDelete.hidden=true;
+    try{localStorage.setItem('csw-notes',JSON.stringify(personalNotes));noteStatus.textContent='Note deleted from this browser.';}
+    catch{noteStatus.textContent='This browser could not update the note.';}
+  });
+
   document.getElementById('article-share').addEventListener('click',async()=>{
     const status=document.getElementById('article-status');
     try{await navigator.clipboard.writeText(location.href);status.textContent='Article link copied.';}
