@@ -7,6 +7,8 @@
   const candidates = [
     [".page-home .hero-copy", "left"],
     [".page-home .hero-scene", "right"],
+    [".home-editorial-spotlight", "right"],
+    [".editorial-mini-link", "up"],
     [".stats .stat", "up"],
     [".section-head.reveal", "left"],
     [".grid .card", "up"],

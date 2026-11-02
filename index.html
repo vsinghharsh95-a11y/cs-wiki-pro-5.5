@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/global-access.css">
   <link rel="stylesheet" href="css/discovery.css?v=point8">
-  <link rel="stylesheet" href="css/cinematic.css?v=redesign1">
+  <link rel="stylesheet" href="css/cinematic.css?v=redesign2">
 </head>
 <body class="page-home">
   <a class="global-skip-link" href="#articles" data-global-key="skip">Skip to main content</a>
@@ -49,7 +49,7 @@
     <div class="stat"><span class="num" id="stat-saved">0</span><span class="label">Saved by you</span></div>
   </section>
 
-  <main class="container" id="articles" tabindex="-1">
+  <main class="container" id="articles" tabindex="-1"><div class="home-feature-layout"><div class="home-feature-main">
     <div class="section-head reveal">
       <div><span class="eyebrow">A GOOD PLACE TO BEGIN</span><h2>Ideas, made clear.</h2></div>
       <div class="head-right">
@@ -62,7 +62,18 @@
     <input type="text" id="search" class="search" placeholder="Search articles...  (press / to focus)" autocomplete="off">
     <div class="filters" id="filters"></div>
     <div class="grid" id="grid"></div>
-  </main>
+  </div>
+  <aside class="home-editorial-rail" aria-label="Featured ways to explore">
+    <section class="home-editorial-spotlight cinema-reveal" data-motion="right" aria-labelledby="editorial-spotlight-title">
+      <div class="editorial-art" aria-hidden="true"><span>CSW / FIELD NOTE 01</span><b class="editorial-glyph">↝</b><small>CONNECTION / EVERYWHERE</small></div>
+      <div class="editorial-copy"><span class="eyebrow">THIS WEEK’S SPOTLIGHT</span><h3 id="editorial-spotlight-title">One connection can open a whole world.</h3><p>Follow the invisible paths between your screen, the web, and the people on the other side.</p><a class="text-link" href="article.html?slug=internet">Explore the internet <span>↗</span></a></div>
+    </section>
+    <div class="editorial-mini-links" aria-label="More ways to learn">
+      <a class="editorial-mini-link" href="paths.html"><span>01 / LEARNING TRAIL</span><strong>Learn in chapters</strong><i>↗</i></a>
+      <a class="editorial-mini-link" href="challenges.html"><span>02 / DAILY SPARK</span><strong>Test your instincts</strong><i>↗</i></a>
+    </div>
+  </aside>
+</div></main>
 
   <section class="topic-wall container reveal" aria-labelledby="topic-wall-title">
     <div class="section-head"><div><span class="eyebrow">PICK A PORTAL</span><h2 id="topic-wall-title">Follow a thread.</h2></div><a class="text-link" href="map.html">Explore the idea map <span>↗</span></a></div>
@@ -171,6 +182,6 @@
   <script src="js/site.js"></script>
   <script src="js/global-access.js"></script>
   <script src="js/discovery.js?v=point8"></script>
-  <script src="js/cinematic.js?v=redesign1"></script>
+  <script src="js/cinematic.js?v=redesign2"></script>
 </body>
 </html>
