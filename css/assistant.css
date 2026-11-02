@@ -1,0 +1,81 @@
+/* Harsh — the CS Wiki virtual guide */
+.harsh-launcher{position:fixed;right:clamp(16px,3vw,30px);bottom:clamp(16px,3vw,28px);z-index:5000;display:flex;align-items:center;gap:11px;min-height:62px;padding:7px 17px 7px 8px;border:1px solid rgba(221,177,255,.34);border-radius:999px;background:linear-gradient(120deg,rgba(31,19,43,.96),rgba(16,14,23,.97));color:#f8f2ff;font:600 .86rem "Space Grotesk",sans-serif;box-shadow:0 16px 46px rgba(0,0,0,.4),0 0 26px rgba(171,89,229,.22),inset 0 1px rgba(255,255,255,.12);cursor:pointer;transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease}
+.harsh-launcher:hover{transform:translateY(-4px);border-color:rgba(109,231,219,.62);box-shadow:0 20px 55px rgba(0,0,0,.44),0 0 34px rgba(171,89,229,.32)}
+.harsh-avatar{position:relative;display:grid;place-items:center;flex:0 0 auto;width:48px;height:48px;overflow:hidden;border:1px solid rgba(227,190,255,.55);border-radius:50%;background:#281339;box-shadow:0 0 18px rgba(177,96,240,.27)}
+.harsh-avatar svg{display:block;width:100%;height:100%}
+.harsh-launcher .harsh-avatar{animation:harshBob 4s ease-in-out infinite}
+.harsh-launcher-label{display:grid;gap:2px;text-align:left}
+.harsh-launcher-label strong{font-size:.84rem;letter-spacing:-.02em}
+.harsh-launcher-label small{color:#bdb0c9;font-size:.63rem;font-weight:400}
+.harsh-status-dot{width:8px;height:8px;margin-left:2px;border-radius:50%;background:#74e6ce;box-shadow:0 0 12px rgba(116,230,206,.75)}
+.harsh-panel{position:fixed;right:clamp(12px,3vw,30px);bottom:clamp(88px,10vw,104px);z-index:5001;display:flex;width:min(410px,calc(100vw - 24px));height:min(650px,calc(100dvh - 124px));flex-direction:column;overflow:hidden;border:1px solid rgba(221,177,255,.26);border-radius:25px;background:rgba(14,12,19,.97);color:#f4edf9;box-shadow:0 28px 100px rgba(0,0,0,.56),0 0 55px rgba(123,52,157,.19);backdrop-filter:blur(24px);transform-origin:bottom right;animation:harshPanelIn .25s cubic-bezier(.2,.8,.2,1)}
+.harsh-panel[hidden]{display:none}
+.harsh-panel-header{display:flex;align-items:center;gap:12px;padding:15px 16px;border-bottom:1px solid rgba(255,255,255,.09);background:linear-gradient(110deg,rgba(147,69,185,.2),rgba(31,114,112,.12))}
+.harsh-panel-header .harsh-avatar{width:48px;height:48px}
+.harsh-identity{display:grid;flex:1;gap:3px}
+.harsh-identity strong{font-size:.98rem;letter-spacing:-.03em}
+.harsh-identity span{color:#b8aabc;font-size:.68rem}
+.harsh-header-status{display:flex;align-items:center;gap:6px;color:#a8ddd2;font-size:.61rem}
+.harsh-icon-button{display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(255,255,255,.11);border-radius:50%;background:rgba(255,255,255,.04);color:#ddd0e8;font-size:1rem;cursor:pointer}
+.harsh-icon-button:hover{border-color:rgba(97,222,214,.45);background:rgba(97,222,214,.08)}
+.harsh-welcome{padding:15px 17px 5px}
+.harsh-welcome h2{margin:0 0 6px;font-size:1.12rem;letter-spacing:-.04em}
+.harsh-welcome p{margin:0;color:#b8aebe;font-size:.72rem;line-height:1.55}
+.harsh-messages{display:flex;min-height:0;flex:1;flex-direction:column;gap:13px;overflow-y:auto;padding:14px 15px 12px;scrollbar-color:rgba(175,112,200,.35) transparent}
+.harsh-message{display:flex;align-items:flex-end;gap:8px;max-width:95%;animation:harshMessageIn .24s ease both}
+.harsh-message[data-role="user"]{align-self:flex-end}
+.harsh-message[data-role="assistant"]{align-self:flex-start}
+.harsh-message-avatar{width:28px;height:28px}
+.harsh-bubble{padding:10px 12px;border:1px solid rgba(255,255,255,.09);border-radius:15px 15px 15px 5px;background:linear-gradient(145deg,rgba(120,65,150,.2),rgba(255,255,255,.035));color:#eee6f3;font-size:.76rem;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
+.harsh-bubble a{color:#82e5dc;text-decoration:underline}
+.harsh-message[data-role="user"] .harsh-bubble{border-color:rgba(176,110,239,.24);border-radius:15px 15px 5px 15px;background:linear-gradient(120deg,rgba(154,78,199,.4),rgba(93,53,138,.36));color:#fff}
+.harsh-suggestions{display:flex;gap:7px;overflow-x:auto;padding:8px 14px 11px;scrollbar-width:thin}
+.harsh-suggestion{flex:0 0 auto;min-height:32px;padding:7px 10px;border:1px solid rgba(220,191,236,.17);border-radius:999px;background:rgba(255,255,255,.035);color:#d8c8e1;font-size:.63rem;white-space:nowrap;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.harsh-suggestion:hover{transform:translateY(-1px);border-color:rgba(97,222,214,.46);background:rgba(97,222,214,.08)}
+.harsh-compose{display:grid;grid-template-columns:minmax(0,1fr) 43px;align-items:end;gap:8px;padding:11px 13px 8px;border-top:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.018)}
+.harsh-compose textarea{width:100%;min-height:43px;max-height:110px;resize:vertical;padding:12px 13px;border:1px solid rgba(229,206,241,.16);border-radius:15px;background:rgba(5,5,8,.58);color:#f7f0fc;font:inherit;font-size:.75rem;line-height:1.4}
+.harsh-compose textarea::placeholder{color:#998ca2}
+.harsh-send{display:grid;place-items:center;width:43px;height:43px;border:0;border-radius:14px;background:linear-gradient(135deg,#ac58df,#7145bc);color:#fff;font-size:1.15rem;box-shadow:0 7px 20px rgba(131,64,184,.24);cursor:pointer}
+.harsh-send:disabled{opacity:.45;cursor:not-allowed}
+.harsh-disclaimer{margin:0;padding:0 14px 12px;color:#91859a;font-size:.56rem;line-height:1.45}
+.harsh-typing{color:#b8aabc;font-size:.67rem;font-style:italic}
+[data-theme="light"] .harsh-launcher{background:linear-gradient(120deg,#32203f,#20182a);color:#fff}
+[data-theme="light"] .harsh-panel{border-color:rgba(115,60,151,.25);background:rgba(250,247,252,.98);color:#281d31}
+[data-theme="light"] .harsh-panel-header{background:linear-gradient(110deg,rgba(170,111,199,.16),rgba(87,166,158,.09));border-color:rgba(53,37,67,.1)}
+[data-theme="light"] .harsh-identity span,[data-theme="light"] .harsh-welcome p{color:#756b7d}
+[data-theme="light"] .harsh-bubble{background:rgba(100,58,125,.075);color:#33253b;border-color:rgba(55,36,67,.1)}
+[data-theme="light"] .harsh-message[data-role="user"] .harsh-bubble{background:linear-gradient(120deg,#9e59c0,#7659a7);color:#fff}
+[data-theme="light"] .harsh-suggestion{background:#fff;color:#55465f;border-color:rgba(53,37,67,.15)}
+[data-theme="light"] .harsh-compose textarea{background:#fff;color:#281d31;border-color:rgba(53,37,67,.17)}
+[data-theme="light"] .harsh-disclaimer{color:#756b7d}
+@keyframes harshBob{0%,100%{translate:0 0}50%{translate:0 -3px}}
+@keyframes harshPanelIn{from{opacity:0;scale:.96;translate:0 8px}to{opacity:1;scale:1;translate:0 0}}
+@keyframes harshMessageIn{from{opacity:0;translate:0 5px}to{opacity:1;translate:0 0}}
+@media(max-width:520px){.harsh-launcher{right:13px;bottom:13px;min-height:56px;padding:6px 13px 6px 6px}.harsh-avatar{width:44px;height:44px}.harsh-panel{right:8px;bottom:78px;width:calc(100vw - 16px);height:min(76dvh,620px);border-radius:22px}.harsh-panel-header{padding:12px}.harsh-welcome{padding:12px 14px 4px}.harsh-messages{padding-inline:11px}}
+@media(prefers-reduced-motion:reduce){.harsh-launcher .harsh-avatar,.harsh-panel,.harsh-message{animation:none!important}.harsh-launcher,.harsh-suggestion,.harsh-icon-button{transition:none!important}}
+
+/* Keep Harsh inside the site's established violet-and-teal visual language */
+.harsh-launcher{border-color:var(--border);background:var(--card);color:var(--text);box-shadow:0 10px 30px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.06)}
+.harsh-launcher:hover{border-color:var(--accent-2);box-shadow:0 12px 34px rgba(0,0,0,.32),inset 0 1px rgba(255,255,255,.08)}
+.harsh-avatar{border-color:var(--border);box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.harsh-status-dot{background:var(--accent-2);box-shadow:none}
+.harsh-panel{border-color:var(--border);background:var(--card);color:var(--text);box-shadow:0 22px 70px rgba(0,0,0,.42)}
+.harsh-panel-header{background:linear-gradient(110deg,rgba(168,85,247,.09),rgba(34,211,238,.045));border-bottom-color:var(--border)}
+.harsh-icon-button:hover{border-color:var(--accent-2);background:rgba(34,211,238,.06)}
+.harsh-bubble{border-color:var(--border);background:rgba(255,255,255,.035);color:var(--text)}
+.harsh-bubble a{color:var(--accent-2)}
+.harsh-message[data-role="user"] .harsh-bubble{border-color:rgba(168,85,247,.24);background:rgba(168,85,247,.19);color:var(--text)}
+.harsh-suggestion:hover{border-color:var(--accent-2);background:rgba(34,211,238,.055)}
+.harsh-compose textarea{border-color:var(--border);background:rgba(0,0,0,.24);color:var(--text)}
+.harsh-compose textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(168,85,247,.1);outline:none}
+.harsh-send{background:var(--accent);box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.harsh-disclaimer{color:var(--muted)}
+[data-theme="light"] .harsh-launcher{background:var(--card);color:var(--text);box-shadow:0 8px 24px rgba(51,31,62,.13)}
+[data-theme="light"] .harsh-panel{border-color:var(--border);background:var(--card);color:var(--text)}
+[data-theme="light"] .harsh-panel-header{background:linear-gradient(110deg,rgba(168,85,247,.08),rgba(34,211,238,.035));border-color:var(--border)}
+[data-theme="light"] .harsh-bubble{background:rgba(168,85,247,.055);color:var(--text)}
+[data-theme="light"] .harsh-message[data-role="user"] .harsh-bubble{background:rgba(168,85,247,.2);color:var(--text)}
+[data-theme="light"] .harsh-compose textarea{background:var(--card);color:var(--text);border-color:var(--border)}
+[data-theme="light"] .harsh-disclaimer{color:var(--muted)}
+
+.harsh-visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}

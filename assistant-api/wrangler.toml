@@ -1,0 +1,16 @@
+name = "cswiki-harsh-assistant"
+main = "worker.js"
+compatibility_date = "2026-11-02"
+
+[vars]
+ALLOWED_ORIGIN = "https://vsinghharsh95-a11y.github.io"
+OPENAI_MODEL = "gpt-6-luna"
+
+# Approximate per-IP abuse guard; Cloudflare applies the threshold per location.
+[[ratelimits]]
+name = "CHAT_RATE_LIMITER"
+namespace_id = "82461073"
+
+[ratelimits.simple]
+limit = 12
+period = 60
