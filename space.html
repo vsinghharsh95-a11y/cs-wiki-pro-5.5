@@ -7,9 +7,11 @@
   <meta name="description" content="Your personal CS Wiki learning space: saved ideas, notes, reading history, and path progress.">
   <title>My Space — CS Wiki</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/global-access.css">
   <link rel="stylesheet" href="css/space.css">
 </head>
 <body class="page-space" data-page="space">
+  <a class="global-skip-link" href="#main-content" data-global-key="skip">Skip to main content</a>
   <div class="progress" id="progress"></div>
   <nav class="navbar">
     <a class="logo" href="index.html">CS<span>Wiki</span><i>✳</i></a>
@@ -19,7 +21,7 @@
     </div>
   </nav>
 
-  <main class="space-page">
+  <main class="space-page" id="main-content" tabindex="-1">
     <header class="space-hero">
       <div class="space-hero-copy">
         <span class="eyebrow">POINT 06 / YOUR PERSONAL FIELD DESK</span>
@@ -78,5 +80,6 @@
   <script src="js/data.js"></script>
   <script src="js/space.js"></script>
   <script src="js/site.js"></script>
+  <script src="js/global-access.js"></script>
 </body>
 </html>

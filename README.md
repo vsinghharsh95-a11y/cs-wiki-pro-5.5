@@ -42,3 +42,8 @@ Keep the `css` and `js` folders beside the HTML files. Do not flatten their cont
 - About: project information
 
 The site is static and can be hosted on GitHub Pages. Bookmarks, reading history, private notes, custom articles, learning-path progress, and challenge activity stay in each visitor's browser. My Space can export and import a personal backup; it does not sync between devices automatically.
+
+
+## Global access
+
+Point 7 adds a mobile navigation menu, keyboard skip links, visible focus styling, and a site-wide reduced-motion fallback. A navigation-language selector offers English and Hindi labels for the shared navigation and accessibility controls; article and lesson text remains in English. Visual article diagrams with accessible descriptions also show those descriptions as captions.

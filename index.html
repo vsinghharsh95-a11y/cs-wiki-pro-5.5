@@ -7,8 +7,10 @@
   <meta name="description" content="A cinematic field guide to computer science. Explore ideas, visual articles and interactive labs.">
   <title>CS Wiki — Curious minds welcome</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/global-access.css">
 </head>
 <body class="page-home">
+  <a class="global-skip-link" href="#articles" data-global-key="skip">Skip to main content</a>
 
   <div class="progress" id="progress"></div>
   <nav class="navbar">
@@ -45,7 +47,7 @@
     <div class="stat"><span class="num" id="stat-saved">0</span><span class="label">Saved by you</span></div>
   </section>
 
-  <main class="container" id="articles">
+  <main class="container" id="articles" tabindex="-1">
     <div class="section-head reveal">
       <div><span class="eyebrow">A GOOD PLACE TO BEGIN</span><h2>Ideas, made clear.</h2></div>
       <div class="head-right">
@@ -165,5 +167,6 @@
   <script src="js/app.js"></script>
   <script src="js/demos.js"></script>
   <script src="js/site.js"></script>
+  <script src="js/global-access.js"></script>
 </body>
 </html>

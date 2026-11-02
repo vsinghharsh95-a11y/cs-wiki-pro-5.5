@@ -7,8 +7,10 @@
   <meta name="description" content="Follow curated learning paths through computer science, from your first bits to the technology behind the web.">
   <title>Learning Paths — CS Wiki</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/global-access.css">
 </head>
 <body class="page-paths">
+  <a class="global-skip-link" href="#main-content" data-global-key="skip">Skip to main content</a>
   <div class="progress" id="progress"></div>
   <nav class="navbar">
     <a class="logo" href="index.html">CS<span>Wiki</span><i>✳</i></a>
@@ -17,7 +19,7 @@
       <button class="icon-btn" id="theme-btn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
     </div>
   </nav>
-  <main class="paths-page">
+  <main class="paths-page" id="main-content" tabindex="-1">
     <header class="page-intro paths-intro">
       <span class="eyebrow">CURATED ROUTES / LEARN WITH DIRECTION</span>
       <h1>Follow the<br><span class="gradient-text">thread.</span></h1>
@@ -38,5 +40,6 @@
   <footer class="footer"><a class="logo footer-logo" href="index.html">CS<span>Wiki</span></a><br>Built for the beautifully curious. <span>© 2026 CS Wiki</span></footer>
   <script src="js/paths.js"></script>
   <script src="js/site.js"></script>
+  <script src="js/global-access.js"></script>
 </body>
 </html>

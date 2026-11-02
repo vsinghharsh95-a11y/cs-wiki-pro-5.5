@@ -7,8 +7,10 @@
   <meta name="description" content="Explore how the ideas of computer science connect in an interactive concept map.">
   <title>The Concept Map — CS Wiki</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/global-access.css">
 </head>
 <body class="page-map">
+  <a class="global-skip-link" href="#main-content" data-global-key="skip">Skip to main content</a>
   <div class="progress" id="progress"></div>
   <nav class="navbar">
     <a class="logo" href="index.html">CS<span>Wiki</span><i>✳</i></a>
@@ -17,7 +19,7 @@
       <button class="icon-btn" id="theme-btn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
     </div>
   </nav>
-  <main class="map-page">
+  <main class="map-page" id="main-content" tabindex="-1">
     <header class="page-intro map-intro">
       <span class="eyebrow">THE BIG PICTURE / INTERACTIVE MAP</span>
       <h1>Everything<br><span class="gradient-text">connects.</span></h1>
@@ -71,5 +73,6 @@
   <script src="js/data.js"></script>
   <script src="js/map.js"></script>
   <script src="js/site.js"></script>
+  <script src="js/global-access.js"></script>
 </body>
 </html>
