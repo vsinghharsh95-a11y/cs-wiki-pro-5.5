@@ -216,7 +216,7 @@ function renderCards(animate) {
     card.innerHTML =
       '<div class="card-cover" aria-hidden="true"><span>CSW / FIELD NOTES</span><b>' + coverGlyph + '</b><i>№ ' + String(index + 1).padStart(2, "0") + '</i></div>' +
       '<button class="bookmark' + (saved ? " saved" : "") + '" title="Save article" aria-label="' + (saved ? "Remove saved article" : "Save article") + '">' + (saved ? "★" : "☆") + "</button>" +
-      '<a class="card-open" href="' + encodeURIComponent(articleSlug(a)) + '">' +
+      '<a class="card-open" href="' + encodeURIComponent(articleSlug(a)) + '.html">' +
       '<span class="tag">' + escapeHtml(a.category) + "</span>" +
       '<span class="level-tag">' + escapeHtml(difficulty) + "</span>" +
       "<h3>" + highlight(a.title, word) + "</h3>" +
@@ -391,7 +391,7 @@ randomBtn.addEventListener("click", function (e) {
   const list = allArticles();
   if (list.length === 0) { showToast("No articles to show yet"); return; }
   const choice = list[Math.floor(Math.random() * list.length)];
-  window.location.href = "" + encodeURIComponent(articleSlug(choice));
+  window.location.href = encodeURIComponent(articleSlug(choice)) + ".html";
 });
 
 // ===== 14. START =====
